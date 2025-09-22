@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="VIT-AP University Hospital - Excellence in Healthcare, Innovation in Education">
     <title>VIT-AP University Hospital</title>
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏥</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navigation Header -->
     <nav class="main-nav">
         <div class="nav-container">
             <div class="nav-brand">
@@ -40,17 +38,14 @@
                     <div class="profile-dropdown">
                         <div class="dropdown-item" onclick="showSection('dashboard')">📊 Dashboard</div>
                         <div class="dropdown-item" onclick="showSection('records')">📋 My Records</div>
-                        <div class="dropdown-item" onclick="showSection('appointments')">📅 Appointments</div>
                         <div class="dropdown-item" onclick="logout()">🚪 Sign Out</div>
                     </div>
                 </div>
                 <button class="btn btn--outline btn--sm" id="sign-in-btn" onclick="handleSignIn()">🔐 Sign In</button>
                 <button class="btn btn--primary btn--sm" onclick="handleBookAppointment()">📅 Book Appointment</button>
-                <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark theme">🌙</button>
+                <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle theme">🌙</button>
                 <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span></span><span></span><span></span>
                 </button>
             </div>
         </div>
@@ -58,9 +53,8 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Homepage Section -->
+        <!-- Home Section -->
         <section id="home" class="section active">
-            <!-- Hero Section -->
             <div class="hero">
                 <div class="container">
                     <div class="hero-content">
@@ -87,14 +81,13 @@
                         <div class="hero-search">
                             <div class="search-container">
                                 <div class="search-icon">🔍</div>
-                                <input type="text" class="search-input" placeholder="Search doctors, services, symptoms, or departments..." id="hero-search" onkeypress="handleSearchKeyPress(event)">
+                                <input type="text" class="search-input" placeholder="Search doctors, services, symptoms..." id="hero-search">
                                 <button class="search-btn" onclick="performHeroSearch()">Search</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Hero Stats -->
                 <div class="hero-stats">
                     <div class="container">
                         <div class="stats-grid">
@@ -130,24 +123,119 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Services Overview -->
+            <section class="services-overview">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Comprehensive Medical Care</h2>
+                        <p class="section-subtitle">From emergency services to specialized care, we provide complete healthcare solutions for the VIT-AP community.</p>
+                    </div>
+
+                    <div class="services-grid">
+                        <div class="service-card featured" onclick="showSection('student-health')">
+                            <div class="service-header">
+                                <div class="service-icon">🎓</div>
+                                <div class="service-badge">Free for Students</div>
+                            </div>
+                            <div class="service-content">
+                                <h3>Student Health Center</h3>
+                                <p>24/7 primary healthcare exclusively for VIT-AP students with free consultations, mental health support, and specialized student wellness programs.</p>
+                            </div>
+                        </div>
+
+                        <div class="service-card" onclick="showSection('emergency')">
+                            <div class="service-header">
+                                <div class="service-icon">🚨</div>
+                                <div class="service-badge">24/7</div>
+                            </div>
+                            <div class="service-content">
+                                <h3>Emergency Services</h3>
+                                <p>Round-the-clock emergency care with 3-minute campus response time, advanced trauma center facilities, and specialized emergency protocols.</p>
+                            </div>
+                        </div>
+
+                        <div class="service-card" onclick="showSection('telemedicine')">
+                            <div class="service-header">
+                                <div class="service-icon">💻</div>
+                                <div class="service-badge">New</div>
+                            </div>
+                            <div class="service-content">
+                                <h3>Telemedicine Platform</h3>
+                                <p>Virtual consultations with our doctors through secure HD video calls, perfect for routine follow-ups and remote consultations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="quick-actions">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Quick Access Portal</h2>
+                        <p class="section-subtitle">Fast access to the most commonly used healthcare services and information.</p>
+                    </div>
+
+                    <div class="actions-grid">
+                        <div class="action-card primary" onclick="handleBookAppointment()">
+                            <div class="action-icon">📅</div>
+                            <div class="action-content">
+                                <div class="action-title">Book Appointment</div>
+                                <div class="action-desc">Schedule with our expert doctors</div>
+                            </div>
+                            <div class="action-arrow">→</div>
+                        </div>
+
+                        <div class="action-card" onclick="showSection('records')">
+                            <div class="action-icon">📋</div>
+                            <div class="action-content">
+                                <div class="action-title">Medical Records</div>
+                                <div class="action-desc">View your complete health history</div>
+                            </div>
+                            <div class="action-arrow">→</div>
+                        </div>
+
+                        <div class="action-card" onclick="showSection('support')">
+                            <div class="action-icon">💬</div>
+                            <div class="action-content">
+                                <div class="action-title">Live Support</div>
+                                <div class="action-desc">Chat with our healthcare team</div>
+                            </div>
+                            <div class="action-arrow">→</div>
+                        </div>
+
+                        <div class="action-card" onclick="showSection('emergency')">
+                            <div class="action-icon">🆘</div>
+                            <div class="action-content">
+                                <div class="action-title">Emergency Help</div>
+                                <div class="action-desc">Immediate medical assistance</div>
+                            </div>
+                            <div class="action-arrow">→</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </section>
 
-        <!-- Records Section -->
+        <!-- Records Section - This will show real data when signed in -->
         <section id="records" class="section">
             <div class="container">
                 <div class="page-header">
                     <h1 class="page-title">Medical Records</h1>
                     <p class="page-subtitle">Access your complete health information</p>
                 </div>
-                <div class="coming-soon">
-                    <h3>📋 Records Portal</h3>
-                    <p>Please sign in to view your medical records</p>
-                    <button class="btn btn--primary" onclick="handleSignIn()">Sign In</button>
+                <div id="records-content">
+                    <div class="coming-soon">
+                        <h3>🔐 Sign In Required</h3>
+                        <p>Please sign in with your student ID to access medical records.</p>
+                        <button class="btn btn--primary" onclick="handleSignIn()">Sign In</button>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Other Sections (unchanged) -->
+        <!-- Other sections -->
         <section id="services" class="section">
             <div class="container">
                 <div class="page-header">
@@ -222,11 +310,9 @@
     <!-- Modal Overlay -->
     <div id="modal-overlay" class="modal-overlay" onclick="closeModal()">
         <div id="modal-container" class="modal-container" onclick="event.stopPropagation()">
-            <!-- Modal content will be inserted here -->
         </div>
     </div>
 
-    <!-- Scripts -->
     <script src="./app.js"></script>
 </body>
 </html>
