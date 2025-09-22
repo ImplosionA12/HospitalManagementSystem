@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VIT-AP University Hospital - Excellence in Healthcare, Innovation in Education">
+    <title>VIT-AP University Hospital</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏥</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* VIT-AP University Hospital - Complete Inline Styles */
+        :root {
+            --primary-blue: #005B96;
+            --primary-blue-light: #0071BD;
+            --primary-blue-dark: #004578;
+            --teal-accent: #00A68C;
+            --teal-light: #00C4A7;
+            --success-green: #2FBF71;
+            --warning-orange: #DC6803;
+            --error-red: #EF4444;
+            --info-blue: #3B82F6;
+            --white: #FFFFFF;
+            --gray-50: #F8FAFC;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E0;
+            --gray-400: #A0AEC0;
+            --gray-500: #718096;
+            --gray-600: #4A5568;
+            --gray-700: #2D3748;
+            --gray-800: #1A202C;
+            --gray-900: #171923;
+            --bg-primary: var(--white);
+            --bg-secondary: var(--gray-50);
+            --text-primary: var(--gray-900);
+            --text-secondary: var(--gray-600);
+            --text-tertiary: var(--gray-500);
+            --border-light: var(--gray-200);
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: var(--gray-900);
+            --bg-secondary: var(--gray-800);
+            --text-primary: var(--white);
+            --text-secondary: var(--gray-300);
+            --text-tertiary: var(--gray-400);
+            --border-light: var(--gray-700);
+            --white: var(--gray-800);
+            --gray-50: var(--gray-800);
+            --gray-100: var(--gray-700);
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+        html { line-height: 1.5; scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: 600; color: var(--text-primary); line-height: 1.3; }
+        h1 { font-size: 2.25rem; } h2 { font-size: 1.875rem; } h3 { font-size: 1.5rem; } h4 { font-size: 1.25rem; }
+        p { margin: 0; line-height: 1.625; }
+        button { font-family: inherit; font-size: inherit; margin: 0; padding: 0; border: none; background: none; cursor: pointer; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        @media (min-width: 768px) { .container { padding: 0 1.5rem; } }
+
+        /* Navigation */
+        .main-nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 100; transition: all 0.2s ease;
+        }
+        [data-theme="dark"] .main-nav { background: rgba(23, 25, 35, 0.95); }
+
+        .nav-container {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 0; gap: 1rem; max-width: 1200px;
+            margin: 0 auto; padding-left: 1rem; padding-right: 1rem;
+        }
+
+        .nav-brand { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
+        .brand-logo { display: flex; align-items: center; gap: 0.75rem; }
+        .logo-icon { font-size: 1.5rem; }
+        .brand-text { display: flex; flex-direction: column; }
+        .brand-title {
+            color: var(--primary-blue); font-size: 1.125rem; font-weight: 700;
+            line-height: 1.2; margin: 0;
+        }
+        .brand-tagline { color: var(--text-secondary); font-size: 0.75rem; font-weight: 500; }
+
+        .nav-links { display: none; align-items: center; gap: 1.5rem; }
+        @media (min-width: 1024px) { .nav-links { display: flex; } }
+
+        .nav-link {
+            color: var(--text-secondary); font-weight: 500; font-size: 0.875rem;
+            padding: 0.5rem 0.75rem; border-radius: 0.375rem;
+            transition: all 0.2s ease; cursor: pointer; white-space: nowrap;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-blue); background-color: rgba(0, 91, 150, 0.1);
+        }
+
+        .nav-actions { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
+
+        .user-profile {
+            position: relative; display: none; align-items: center; gap: 0.5rem;
+            padding: 0.5rem; border-radius: 0.5rem; cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .user-profile.active { display: flex; }
+        .user-profile:hover { background-color: var(--bg-secondary); }
+
+        .profile-avatar {
+            width: 32px; height: 32px; border-radius: 50%;
+            background: var(--primary-blue); color: var(--white);
+            display: flex; align-items: center; justify-content: center; font-size: 0.875rem;
+        }
+        .profile-name { font-weight: 500; font-size: 0.875rem; color: var(--text-primary); }
+
+        .profile-dropdown {
+            position: absolute; top: 100%; right: 0;
+            background: var(--bg-primary); border: 1px solid var(--border-light);
+            border-radius: 0.5rem; box-shadow: var(--shadow-lg);
+            padding: 0.5rem; min-width: 200px;
+            opacity: 0; visibility: hidden; transform: translateY(-10px);
+            transition: all 0.2s ease;
+        }
+        .user-profile:hover .profile-dropdown {
+            opacity: 1; visibility: visible; transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block; padding: 0.75rem; color: var(--text-primary);
+            border-radius: 0.375rem; transition: background-color 0.2s ease;
+            white-space: nowrap; cursor: pointer;
+        }
+        .dropdown-item:hover { background-color: var(--bg-secondary); }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+            padding: 0.75rem 1rem; font-size: 0.875rem; font-weight: 600;
+            border-radius: 0.5rem; cursor: pointer; transition: all 0.2s ease;
+            white-space: nowrap; text-decoration: none; border: 1px solid transparent;
+        }
+        .btn--sm { padding: 0.5rem 0.75rem; font-size: 0.75rem; }
+        .btn--lg { padding: 1rem 1.5rem; font-size: 1rem; }
+
+        .btn--primary {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+            color: var(--white);
+        }
+        .btn--primary:hover {
+            background: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--primary-blue) 100%);
+            transform: translateY(-2px); box-shadow: var(--shadow-lg);
+        }
+
+        .btn--outline {
+            background: var(--bg-primary); color: var(--primary-blue); border-color: var(--primary-blue);
+        }
+        .btn--outline:hover {
+            background: var(--primary-blue); color: var(--white);
+            transform: translateY(-1px); box-shadow: var(--shadow-md);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            width: 44px; height: 44px; border-radius: 50%;
+            background: var(--bg-secondary); border: 1px solid var(--border-light);
+            font-size: 1.25rem; display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s ease; cursor: pointer; position: relative; overflow: hidden;
+        }
+        .theme-toggle:hover {
+            background: var(--primary-blue-light); color: var(--white);
+            transform: scale(1.1); box-shadow: var(--shadow-md);
+        }
+        .theme-toggle:active { transform: scale(0.95); }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: flex; flex-direction: column; width: 24px; height: 24px;
+            gap: 4px; background: none; border: none; cursor: pointer;
+        }
+        @media (min-width: 1024px) { .mobile-menu-toggle { display: none; } }
+
+        .mobile-menu-toggle span {
+            width: 100%; height: 2px; background: var(--text-primary);
+            border-radius: 1px; transition: all 0.2s ease;
+        }
+
+        /* Main Content */
+        .main-content { margin-top: 80px; min-height: calc(100vh - 80px); }
+
+        .section { display: none; min-height: 60vh; }
+        .section.active { display: block; animation: fadeIn 0.3s ease; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative; padding: 5rem 0 4rem;
+            background: linear-gradient(135deg, rgba(0, 91, 150, 0.05) 0%, rgba(0, 166, 140, 0.05) 100%);
+            overflow: hidden;
+        }
+        [data-theme="dark"] .hero {
+            background: linear-gradient(135deg, rgba(0, 91, 150, 0.1) 0%, rgba(0, 166, 140, 0.1) 100%);
+        }
+
+        .hero-content { text-align: center; max-width: 800px; margin: 0 auto; }
+
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(0, 91, 150, 0.1); color: var(--primary-blue);
+            padding: 0.5rem 1rem; border-radius: 2rem;
+            font-size: 0.875rem; font-weight: 500; margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 91, 150, 0.2);
+        }
+
+        .hero-title {
+            font-size: clamp(1.875rem, 5vw, 3rem); font-weight: 700;
+            line-height: 1.2; margin-bottom: 1.5rem; color: var(--text-primary);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--teal-accent) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem; color: var(--text-secondary); margin-bottom: 2rem;
+            max-width: 600px; margin-left: auto; margin-right: auto;
+        }
+
+        .hero-actions {
+            display: flex; flex-wrap: wrap; gap: 1rem;
+            justify-content: center; margin-bottom: 2rem;
+        }
+
+        .hero-search { max-width: 600px; margin: 0 auto 4rem; }
+
+        .search-container {
+            position: relative; display: flex; align-items: center;
+            background: var(--bg-primary); border: 1px solid var(--border-light);
+            border-radius: 2rem; padding: 0.5rem;
+            box-shadow: var(--shadow-lg); transition: all 0.2s ease;
+            margin-bottom: 1rem;
+        }
+        .search-container:hover {
+            box-shadow: var(--shadow-xl); border-color: var(--primary-blue-light);
+        }
+
+        .search-icon { color: var(--text-secondary); margin-left: 1rem; font-size: 1.125rem; }
+
+        .search-input {
+            flex: 1; border: none; background: none; padding: 0.75rem 1rem;
+            font-size: 1rem; color: var(--text-primary); outline: none;
+        }
+        .search-input::placeholder { color: var(--text-tertiary); }
+
+        .search-btn {
+            background: var(--primary-blue); color: var(--white); border: none;
+            padding: 0.75rem 1.5rem; border-radius: 1.5rem;
+            font-weight: 600; cursor: pointer; transition: all 0.2s ease;
+        }
+        .search-btn:hover { background: var(--primary-blue-dark); transform: translateY(-1px); }
+
+        /* Hero Statistics */
+        .hero-stats {
+            background: var(--bg-primary); border-radius: 1.5rem;
+            box-shadow: var(--shadow-xl); margin: 0 auto; max-width: 900px;
+            padding: 2rem; border: 1px solid var(--border-light);
+        }
+
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem;
+        }
+
+        .stat-item { display: flex; align-items: center; gap: 1rem; }
+
+        .stat-icon {
+            font-size: 1.875rem; width: 60px; height: 60px;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, rgba(0, 91, 150, 0.1), rgba(0, 166, 140, 0.1));
+            border-radius: 1rem; flex-shrink: 0;
+        }
+
+        .stat-number {
+            font-size: 1.5rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 0.25rem;
+        }
+
+        .stat-label { font-size: 0.875rem; font-weight: 500; color: var(--text-secondary); }
+
+        /* Services Overview */
+        .services-overview { padding: 5rem 0; background: var(--bg-secondary); }
+
+        .section-header { text-align: center; margin-bottom: 4rem; }
+
+        .section-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(0, 91, 150, 0.1); color: var(--primary-blue);
+            padding: 0.5rem 1rem; border-radius: 2rem;
+            font-size: 0.875rem; font-weight: 500; margin-bottom: 1rem;
+            border: 1px solid rgba(0, 91, 150, 0.2);
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 4vw, 2.25rem); font-weight: 700;
+            color: var(--text-primary); margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem; color: var(--text-secondary);
+            max-width: 600px; margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--bg-primary); border: 1px solid var(--border-light);
+            border-radius: 1.5rem; padding: 2rem; transition: all 0.2s ease;
+            cursor: pointer; position: relative; overflow: hidden;
+        }
+        .service-card:hover {
+            transform: translateY(-8px); box-shadow: var(--shadow-xl);
+            border-color: var(--primary-blue-light);
+        }
+        .service-card.featured {
+            border: 2px solid var(--primary-blue);
+            background: linear-gradient(135deg, rgba(0, 91, 150, 0.02) 0%, rgba(0, 166, 140, 0.02) 100%);
+        }
+
+        .service-header {
+            display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1rem;
+        }
+
+        .service-icon {
+            font-size: 2.25rem; width: 80px; height: 80px;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, rgba(0, 91, 150, 0.1), rgba(0, 166, 140, 0.1));
+            border-radius: 1rem;
+        }
+
+        .service-badge {
+            background: var(--success-green); color: var(--white);
+            padding: 0.25rem 0.75rem; border-radius: 2rem;
+            font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+        }
+
+        .service-content h3 {
+            font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem;
+        }
+        .service-content p { color: var(--text-secondary); margin-bottom: 1rem; }
+
+        .service-features { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+
+        .feature-tag {
+            background: rgba(0, 91, 150, 0.1); color: var(--primary-blue);
+            padding: 0.25rem 0.75rem; border-radius: 2rem;
+            font-size: 0.75rem; font-weight: 500;
+        }
+
+        .service-footer {
+            display: flex; align-items: center; justify-content: space-between;
+            padding-top: 1rem; border-top: 1px solid var(--border-light);
+        }
+
+        /* Quick Actions */
+        .quick-actions { padding: 5rem 0; }
+
+        .actions-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
+        }
+
+        .action-card {
+            background: var(--bg-primary); border: 1px solid var(--border-light);
+            border-radius: 1rem; padding: 1.5rem; display: flex;
+            align-items: center; gap: 1rem; cursor: pointer;
+            transition: all 0.2s ease; text-decoration: none; color: inherit;
+        }
+        .action-card:hover {
+            transform: translateY(-4px); box-shadow: var(--shadow-lg);
+            border-color: var(--primary-blue-light);
+        }
+        .action-card.primary {
+            background: linear-gradient(135deg, rgba(0, 91, 150, 0.05) 0%, rgba(0, 166, 140, 0.05) 100%);
+            border-color: var(--primary-blue);
+        }
+
+        .action-icon {
+            font-size: 1.875rem; width: 60px; height: 60px;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, rgba(0, 91, 150, 0.1), rgba(0, 166, 140, 0.1));
+            border-radius: 1rem; flex-shrink: 0;
+        }
+
+        .action-content { flex: 1; }
+        .action-title {
+            font-size: 1.125rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;
+        }
+        .action-desc { color: var(--text-secondary); font-size: 0.875rem; }
+
+        .action-arrow {
+            font-size: 1.25rem; color: var(--text-tertiary); transition: all 0.2s ease;
+        }
+        .action-card:hover .action-arrow {
+            color: var(--primary-blue); transform: translateX(4px);
+        }
+
+        /* Page headers */
+        .page-header { text-align: center; padding: 4rem 0 3rem; }
+
+        .page-title {
+            font-size: clamp(1.875rem, 5vw, 3rem); font-weight: 700;
+            color: var(--text-primary); margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.25rem; color: var(--text-secondary);
+            max-width: 700px; margin: 0 auto;
+        }
+
+        .coming-soon {
+            text-align: center; padding: 4rem 2rem;
+            background: var(--bg-secondary); border-radius: 1rem;
+            margin: 2rem 0; border: 1px solid var(--border-light);
+        }
+        .coming-soon h3 { color: var(--primary-blue); margin-bottom: 1rem; font-size: 1.5rem; }
+        .coming-soon p { color: var(--text-secondary); font-size: 1.125rem; margin-bottom: 1.5rem; }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.5); display: flex;
+            align-items: center; justify-content: center; z-index: 200;
+            opacity: 0; visibility: hidden; transition: all 0.2s ease;
+            backdrop-filter: blur(4px); padding: 1rem;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+
+        .modal-container {
+            background: var(--bg-primary); border-radius: 1.5rem;
+            box-shadow: var(--shadow-xl); max-width: 500px; width: 100%;
+            max-height: 90vh; overflow-y: auto;
+            transform: scale(0.95) translateY(20px); transition: all 0.2s ease; position: relative;
+        }
+        .modal-overlay.active .modal-container { transform: scale(1) translateY(0); }
+
+        .modal-header { padding: 1.5rem 1.5rem 1rem; border-bottom: 1px solid var(--border-light); }
+        .modal-title { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin: 0; }
+        .modal-body { padding: 1.5rem; }
+
+        .modal-close {
+            position: absolute; top: 1rem; right: 1rem; background: none; border: none;
+            font-size: 1.25rem; color: var(--text-secondary); cursor: pointer;
+            width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+            border-radius: 0.375rem; transition: all 0.2s ease;
+        }
+        .modal-close:hover { background: var(--bg-secondary); color: var(--text-primary); }
+
+        /* Forms */
+        .form-group { margin-bottom: 1rem; }
+        .form-label {
+            display: block; font-size: 0.875rem; font-weight: 600;
+            color: var(--text-primary); margin-bottom: 0.5rem;
+        }
+        .form-input {
+            width: 100%; padding: 0.75rem; font-size: 1rem;
+            color: var(--text-primary); background: var(--bg-primary);
+            border: 1px solid var(--border-light); border-radius: 0.5rem;
+            transition: all 0.2s ease;
+        }
+        .form-input:focus {
+            outline: none; border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(0, 91, 150, 0.1);
+        }
+        .form-input::placeholder { color: var(--text-tertiary); }
+
+        .form-actions {
+            display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.5rem;
+        }
+
+        /* Cards for Records */
+        .card {
+            background: var(--bg-primary); border: 1px solid var(--border-light);
+            border-radius: 1rem; margin-bottom: 1.5rem; overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .card-header {
+            padding: 1.5rem; border-bottom: 1px solid var(--border-light);
+            background: var(--bg-secondary);
+        }
+        .card-title {
+            font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;
+        }
+        .card-subtitle { color: var(--text-secondary); font-size: 0.875rem; }
+        .card-body { padding: 1.5rem; }
+
+        /* Toast */
+        .toast {
+            position: fixed; top: 20px; right: 20px;
+            background: var(--bg-primary); border-radius: 0.75rem; padding: 1rem;
+            box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 0.75rem;
+            z-index: 300; min-width: 300px; border-left: 4px solid;
+            animation: slideInRight 0.3s ease;
+        }
+        .toast--success { border-left-color: var(--success-green); }
+        .toast--error { border-left-color: var(--error-red); }
+        .toast--warning { border-left-color: var(--warning-orange); }
+        .toast--info { border-left-color: var(--info-blue); }
+
+        .toast-icon { font-size: 1.125rem; }
+        .toast-message { flex: 1; color: var(--text-primary); font-weight: 500; }
+        .toast-close {
+            background: none; border: none; font-size: 1.125rem; cursor: pointer;
+            color: var(--text-secondary); width: 24px; height: 24px;
+            display: flex; align-items: center; justify-content: center; border-radius: 0.125rem;
+        }
+        .toast-close:hover { background: var(--bg-secondary); }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 767px) {
+            .hero { padding: 3rem 0 2rem; }
+            .hero-actions { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 300px; }
+            .services-grid, .actions-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            .theme-toggle { width: 40px; height: 40px; font-size: 1.125rem; }
+            .brand-title { font-size: 1rem; }
+            .brand-tagline { font-size: 0.7rem; }
+        }
+
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="brand-logo">
+                    <span class="logo-icon">🏥</span>
+                    <div class="brand-text">
+                        <h1 class="brand-title">VIT-AP University Hospital</h1>
+                        <span class="brand-tagline">Excellence in Healthcare, Innovation in Education</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="nav-links">
+                <span class="nav-link active" onclick="showSection('home')">🏠 Home</span>
+                <span class="nav-link" onclick="showSection('services')">🏥 Services</span>
+                <span class="nav-link" onclick="showSection('doctors')">👨‍⚕️ Doctors</span>
+                <span class="nav-link" onclick="showSection('student-health')">🎓 Student Health</span>
+                <span class="nav-link" onclick="showSection('emergency')">🚨 Emergency</span>
+                <span class="nav-link" onclick="showSection('records')">📋 Records</span>
+                <span class="nav-link" onclick="showSection('support')">💬 Support</span>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="user-profile" id="user-profile">
+                    <div class="profile-avatar">👤</div>
+                    <span class="profile-name" id="profile-name">Guest</span>
+                    <div class="profile-dropdown">
+                        <div class="dropdown-item" onclick="showSection('dashboard')">📊 Dashboard</div>
+                        <div class="dropdown-item" onclick="showSection('records')">📋 My Records</div>
+                        <div class="dropdown-item" onclick="logout()">🚪 Sign Out</div>
+                    </div>
+                </div>
+                
+                <button class="btn btn--outline btn--sm" id="sign-in-btn" onclick="handleSignIn()">🔐 Sign In</button>
+                <button class="btn btn--primary btn--sm" onclick="handleBookAppointment()">📅 Book Appointment</button>
+                <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <span>🏆</span>
+                            <span>NABH Accredited • ISO 9001:2015 Certified</span>
+                        </div>
+                        <h1 class="hero-title">
+                            Excellence in Healthcare,<br>
+                            <span class="gradient-text">Innovation in Education</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            VIT-AP University Hospital provides world-class medical care for our campus community and beyond. 
+                            Experience cutting-edge healthcare with compassionate service, available 24/7 for your health and wellness needs.
+                        </p>
+                        <div class="hero-actions">
+                            <button class="btn btn--primary btn--lg" onclick="handleBookAppointment()">
+                                📅 Book Appointment Now
+                            </button>
+                            <button class="btn btn--outline btn--lg" onclick="handleEmergency()">
+                                🚨 Emergency: +91-863-123-VITAP
+                            </button>
+                        </div>
+                        <div class="hero-search">
+                            <div class="search-container">
+                                <div class="search-icon">🔍</div>
+                                <input type="text" class="search-input" placeholder="Search doctors, services, symptoms..." id="hero-search">
+                                <button class="search-btn" onclick="performHeroSearch()">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="container">
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-icon">🏥</div>
+                                <div class="stat-content">
+                                    <div class="stat-number">200+</div>
+                                    <div class="stat-label">Hospital Beds</div>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">👨‍⚕️</div>
+                                <div class="stat-content">
+                                    <div class="stat-number">50+</div>
+                                    <div class="stat-label">Expert Doctors</div>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">🎓</div>
+                                <div class="stat-content">
+                                    <div class="stat-number">15,000+</div>
+                                    <div class="stat-label">Students Served</div>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">⭐</div>
+                                <div class="stat-content">
+                                    <div class="stat-number">4.9/5</div>
+                                    <div class="stat-label">Patient Rating</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services Overview -->
+            <section class="services-overview">
+                <div class="container">
+                    <div class="section-header">
+                        <div class="section-badge">
+                            <span>🏥</span>
+                            <span>Our Healthcare Services</span>
+                        </div>
+                        <h2 class="section-title">Comprehensive Medical Care</h2>
+                        <p class="section-subtitle">From emergency services to specialized care, we provide complete healthcare solutions for the VIT-AP community.</p>
+                    </div>
+                    
+                    <div class="services-grid">
+                        <div class="service-card featured" onclick="showSection('student-health')">
+                            <div class="service-header">
+                                <div class="service-icon">🎓</div>
+                                <div class="service-badge">Free for Students</div>
+                            </div>
+                            <div class="service-content">
+                                <h3>Student Health Center</h3>
+                                <p>24/7 primary healthcare exclusively for VIT-AP students with free consultations, mental health support, and specialized student wellness programs.</p>
+                                <div class="service-features">
+                                    <span class="feature-tag">✓ Free Consultations</span>
+                                    <span class="feature-tag">✓ Mental Health</span>
+                                    <span class="feature-tag">✓ 24/7 Available</span>
+                                </div>
+                            </div>
+                            <div class="service-footer">
+                                <button class="btn btn--outline btn--sm">Learn More</button>
+                            </div>
+                        </div>
+
+                        <div class="service-card" onclick="showSection('emergency')">
+                            <div class="service-header">
+                                <div class="service-icon">🚨</div>
+                                <div class="service-badge">24/7</div>
+                            </div>
+                            <div class="service-content">
+                                <h3>Emergency Services</h3>
+                                <p>Round-the-clock emergency care with 3-minute campus response time, advanced trauma center facilities, and specialized emergency protocols.</p>
+                                <div class="service-features">
+                                    <span class="feature-tag">✓ 3min Response</span>
+                                    <span class="feature-tag">✓ Trauma Center</span>
+                                    <span class="feature-tag">✓ Ambulance</span>
+                                </div>
+                            </div>
+                            <div class="service-footer">
+                                <button class="btn btn--outline btn--sm">Emergency Info</button>
+                            </div>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="service-header">
+                                <div class="service-icon">💻</div>
+                                <div class="service-badge">New</div>
+                            </div>
+                            <div class="service-content">
+                                <h3>Telemedicine Platform</h3>
+                                <p>Virtual consultations with our doctors through secure HD video calls, perfect for routine follow-ups and remote consultations.</p>
+                                <div class="service-features">
+                                    <span class="feature-tag">✓ HD Video</span>
+                                    <span class="feature-tag">✓ Secure</span>
+                                    <span class="feature-tag">✓ Convenient</span>
+                                </div>
+                            </div>
+                            <div class="service-footer">
+                                <button class="btn btn--outline btn--sm">Start Video Call</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="quick-actions">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Quick Access Portal</h2>
+                        <p class="section-subtitle">Fast access to the most commonly used healthcare services and information.</p>
+                    </div>
+                    
+                    <div class="actions-grid">
+                        <div class="action-card primary" onclick="handleBookAppointment()">
+                            <div class="action-icon">📅</div>
+                            <div class="action-content">
+                                <div class="action-title">Book Appointment</div>
+                                <div class="action-desc">Schedule with our expert doctors</div>
+                            </div>
+                            <div class="action-arrow">→</div>
+                        </div>
+
+                        <div class="action-card" onclick="showSection('records')">
+                            <div class="action-icon">📋</div>
+                            <div class="action-content">
+                                <div class="action-title">Medical Records</div>
+                                <div class="action-desc">View your complete health history</div>
+                            </div>
+                            <div class="action-arrow">→</div>
+                        </div>
+
+                        <div class="action-card" onclick="showSection('support')">
+                            <div class="action-icon">💬</div>
+                            <div class="action-content">
+                                <div class="action-title">Live Support</div>
+                                <div class="action-desc">Chat with our healthcare team</div>
+                            </div>
+                            <div class="action-arrow">→</div>
+                        </div>
+
+                        <div class="action-card" onclick="handleEmergency()">
+                            <div class="action-icon">🆘</div>
+                            <div class="action-content">
+                                <div class="action-title">Emergency Help</div>
+                                <div class="action-desc">Immediate medical assistance</div>
+                            </div>
+                            <div class="action-arrow">→</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Other Sections -->
+        <section id="services" class="section">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">Healthcare Services</h1>
+                    <p class="page-subtitle">Comprehensive medical care tailored for the VIT-AP University community</p>
+                </div>
+                <div class="coming-soon">
+                    <h3>🏥 Complete Services Portal</h3>
+                    <p>We're building a comprehensive services directory with detailed information about all our medical specialties, procedures, and healthcare programs.</p>
+                    <button class="btn btn--primary" onclick="showSection('home')">← Back to Home</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="doctors" class="section">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">Find Our Doctors</h1>
+                    <p class="page-subtitle">Expert physicians and specialists available for consultations</p>
+                </div>
+                <div class="coming-soon">
+                    <h3>👨‍⚕️ Doctor Directory</h3>
+                    <p>Our comprehensive doctor search and booking system is being finalized with detailed profiles, specialties, and real-time availability.</p>
+                    <button class="btn btn--primary" onclick="showSection('home')">← Back to Home</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="student-health" class="section">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">Student Health Center</h1>
+                    <p class="page-subtitle">Dedicated healthcare services for VIT-AP students</p>
+                </div>
+                <div class="coming-soon">
+                    <h3>🎓 Student Health Portal</h3>
+                    <p>Specialized student health services portal under development with free consultations, mental health support, and wellness programs.</p>
+                    <button class="btn btn--primary" onclick="showSection('home')">← Back to Home</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="emergency" class="section">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">Emergency Services</h1>
+                    <p class="page-subtitle">24/7 emergency medical care</p>
+                </div>
+                <div class="coming-soon">
+                    <h3>🚨 Emergency Portal</h3>
+                    <p>For immediate emergencies, call <strong>+91-863-123-VITAP</strong> or visit our emergency department. Our campus response time is under 3 minutes.</p>
+                    <button class="btn btn--primary" onclick="showSection('home')">← Back to Home</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="records" class="section">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">Medical Records</h1>
+                    <p class="page-subtitle">Access your complete health information</p>
+                </div>
+                <div id="records-content">
+                    <div class="coming-soon">
+                        <h3>🔐 Sign In Required</h3>
+                        <p>Please sign in with your student ID to access medical records.</p>
+                        <button class="btn btn--primary" onclick="handleSignIn()">Sign In</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="support" class="section">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">Contact Support</h1>
+                    <p class="page-subtitle">Get help from our healthcare support team</p>
+                </div>
+                <div class="coming-soon">
+                    <h3>💬 Support Portal</h3>
+                    <p>Advanced support system with live chat, ticketing, and FAQ is in development. For immediate assistance, email <strong>hospital@vitap.ac.in</strong> or call <strong>+91-863-2293-000</strong>.</p>
+                    <button class="btn btn--primary" onclick="showSection('home')">← Back to Home</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal-overlay" class="modal-overlay" onclick="closeModal()">
+        <div id="modal-container" class="modal-container" onclick="event.stopPropagation()">
+        </div>
+    </div>
+
+    <script>
+        // VIT-AP University Hospital - Complete JavaScript Functionality
+        let currentTheme = localStorage.getItem('vitap-theme') || 'light';
+        let currentSection = 'home';
+        let currentUser = null;
+
+        // Medical data for Ruthvik
+        const ruthvikData = {
+            name: 'Ruthvik',
+            id: '24MIC7198',
+            email: 'ruthvik.24mic7198@vitap.ac.in',
+            bloodGroup: 'B+',
+            height: '175 cm',
+            weight: '68 kg',
+            bmi: '22.2',
+            allergies: ['Dust', 'Pollen'],
+            visits: [
+                {
+                    date: '2025-09-15',
+                    doctor: 'Dr. Priya Sharma',
+                    department: 'Student Health Center',
+                    reason: 'Annual Health Checkup',
+                    diagnosis: 'Overall healthy condition with no acute concerns',
+                    notes: 'Patient is in excellent health. All vital signs normal. Blood pressure: 120/80 mmHg. Continue current lifestyle with regular exercise. Recommended Vitamin D3 supplement weekly.',
+                    cost: 'Free (Student Coverage)'
+                },
+                {
+                    date: '2025-08-22',
+                    doctor: 'Dr. Anitha Reddy',
+                    department: 'Mental Health Services',
+                    reason: 'Academic Stress Counseling',
+                    diagnosis: 'Mild anxiety symptoms related to academic pressure and semester exams',
+                    notes: 'Student experiencing normal academic stress. Discussed stress management techniques including deep breathing exercises, time management, and study scheduling. Sleep hygiene recommendations provided.',
+                    cost: 'Free (Student Coverage)'
+                },
+                {
+                    date: '2025-07-10',
+                    doctor: 'Dr. Vikram Singh',
+                    department: 'Sports Medicine',
+                    reason: 'Knee strain from basketball',
+                    diagnosis: 'Minor strain in left knee - Grade 1 MCL sprain',
+                    notes: 'Injury occurred during basketball practice. Mild swelling and tenderness noted. Prescribed rest for 2 weeks with ice therapy 3-4 times daily. Physiotherapy sessions recommended. Full recovery achieved.',
+                    cost: '₹300 (Student Discount Applied)'
+                }
+            ]
+        };
+
+        function initApp() {
+            console.log('🏥 VIT-AP University Hospital initialized');
+            setTheme(currentTheme);
+            setupEventListeners();
+        }
+
+        function setTheme(theme) {
+            currentTheme = theme;
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('vitap-theme', theme);
+            
+            const btn = document.getElementById('theme-toggle');
+            if (btn) {
+                btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+                btn.title = `Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`;
+            }
+        }
+
+        function toggleTheme() {
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            setTheme(newTheme);
+            
+            const btn = document.getElementById('theme-toggle');
+            if (btn) {
+                btn.style.transform = 'rotate(360deg)';
+                setTimeout(() => { btn.style.transform = ''; }, 300);
+            }
+            
+            showToast(`Switched to ${newTheme} theme! 🎨`, 'success');
+        }
+
+        function setupEventListeners() {
+            document.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'T') {
+                    e.preventDefault();
+                    toggleTheme();
+                }
+                if (e.key === 'Escape') closeModal();
+            });
+
+            const search = document.getElementById('hero-search');
+            if (search) {
+                search.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') performHeroSearch();
+                });
+            }
+        }
+
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            
+            const section = document.getElementById(id);
+            if (section) {
+                section.classList.add('active');
+                currentSection = id;
+                
+                const navLink = document.querySelector(`[onclick*="${id}"]`);
+                if (navLink) navLink.classList.add('active');
+                
+                if (id === 'records') renderRecords();
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function handleSignIn() {
+            const modal = createModal('Sign In to VIT-AP Hospital', `
+                <form onsubmit="processSignIn(event)">
+                    <div class="form-group">
+                        <label class="form-label">Student ID</label>
+                        <input id="username" class="form-input" required placeholder="24MIC7198">
+                        <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">Use your VIT-AP Student ID</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input id="password" type="password" class="form-input" required placeholder="vitap123">
+                        <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">Demo password: vitap123</div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn--outline" onclick="closeModal()">Cancel</button>
+                        <button type="submit" class="btn btn--primary">Sign In</button>
+                    </div>
+                </form>
+                <div style="text-align: center; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-light);">
+                    <small style="color: var(--text-secondary);">
+                        <strong>Demo Credentials:</strong><br>
+                        Student ID: 24MIC7198<br>
+                        Password: vitap123
+                    </small>
+                </div>
+            `);
+        }
+
+        function processSignIn(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+
+            if (['24MIC7198', 'ruthvik', 'Ruthvik'].includes(username) && password === 'vitap123') {
+                currentUser = ruthvikData;
+                updateUIForLogin();
+                closeModal();
+                showToast(`Welcome back, ${currentUser.name}! 👋`, 'success');
+                
+                if (currentSection === 'records') renderRecords();
+            } else {
+                showToast('Invalid credentials. Please try: 24MIC7198 / vitap123', 'error');
+            }
+        }
+
+        function updateUIForLogin() {
+            document.getElementById('sign-in-btn').style.display = 'none';
+            const profile = document.getElementById('user-profile');
+            if (profile) {
+                profile.classList.add('active');
+                document.getElementById('profile-name').textContent = currentUser.name;
+            }
+        }
+
+        function logout() {
+            currentUser = null;
+            document.getElementById('sign-in-btn').style.display = 'flex';
+            document.getElementById('user-profile').classList.remove('active');
+            if (currentSection === 'records') renderRecords();
+            showToast('Signed out successfully! 👋', 'info');
+        }
+
+        function renderRecords() {
+            const content = document.getElementById('records-content');
+            if (!currentUser) {
+                content.innerHTML = `
+                    <div class="coming-soon">
+                        <h3>🔐 Sign In Required</h3>
+                        <p>Please sign in with your student ID to access medical records.</p>
+                        <button class="btn btn--primary" onclick="handleSignIn()">Sign In</button>
+                    </div>
+                `;
+                return;
+            }
+
+            content.innerHTML = `
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Patient Overview</div>
+                        <div class="card-subtitle">${currentUser.name} • ${currentUser.id}</div>
+                    </div>
+                    <div class="card-body">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                            <div><strong>Blood Group:</strong> ${currentUser.bloodGroup}</div>
+                            <div><strong>Height:</strong> ${currentUser.height}</div>
+                            <div><strong>Weight:</strong> ${currentUser.weight}</div>
+                            <div><strong>BMI:</strong> ${currentUser.bmi}</div>
+                            <div><strong>Email:</strong> ${currentUser.email}</div>
+                            <div><strong>Allergies:</strong> ${currentUser.allergies.join(', ')}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Recent Medical Visits</div>
+                        <div class="card-subtitle">Last ${currentUser.visits.length} clinical encounters</div>
+                    </div>
+                    <div class="card-body">
+                        ${currentUser.visits.map((visit, index) => `
+                            <div style="padding: 1.5rem 0; ${index < currentUser.visits.length - 1 ? 'border-bottom: 1px solid var(--border-light);' : ''}">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                                    <div style="flex: 1;">
+                                        <div style="font-weight: 600; font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.5rem;">
+                                            ${visit.reason}
+                                        </div>
+                                        <div style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.75rem;">
+                                            <strong>${visit.doctor}</strong> • ${visit.department} • ${new Date(visit.date).toLocaleDateString('en-IN')}
+                                        </div>
+                                    </div>
+                                    <div style="text-align: right; color: var(--primary-blue); font-weight: 600; font-size: 0.9rem; min-width: 120px;">
+                                        ${visit.cost}
+                                    </div>
+                                </div>
+                                
+                                <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+                                    <div style="margin-bottom: 0.75rem;">
+                                        <strong style="color: var(--text-primary);">Diagnosis:</strong>
+                                        <div style="margin-top: 0.25rem; line-height: 1.5;">${visit.diagnosis}</div>
+                                    </div>
+                                    <div>
+                                        <strong style="color: var(--text-primary);">Clinical Notes:</strong>
+                                        <div style="margin-top: 0.25rem; line-height: 1.5;">${visit.notes}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin: 2rem 0; padding: 1.5rem; background: var(--bg-secondary); border-radius: 0.75rem;">
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">
+                        📋 Complete medical history available • 🔒 HIPAA Compliant • 📱 Mobile accessible
+                    </p>
+                </div>
+            `;
+        }
+
+        function handleBookAppointment() {
+            if (!currentUser) {
+                showToast('Please sign in first to book an appointment 🔐', 'warning');
+                handleSignIn();
+                return;
+            }
+            showToast('Appointment booking system coming soon! 📅', 'info');
+        }
+
+        function performHeroSearch() {
+            const input = document.getElementById('hero-search');
+            const query = input?.value.trim() || '';
+            if (query) {
+                showToast(`Searching for "${query}"... Advanced search coming soon! 🔍`, 'info');
+                if (input) input.value = '';
+            }
+        }
+
+        function handleEmergency() {
+            if (confirm('📞 Emergency Services\\n\\nCall VIT-AP Hospital Emergency:\\n+91-863-123-VITAP\\n\\nProceed?')) {
+                window.open('tel:+918631234827');
+            }
+        }
+
+        function toggleMobileMenu() {
+            showToast('Mobile navigation menu coming soon! 📱', 'info');
+        }
+
+        function createModal(title, content) {
+            const overlay = document.getElementById('modal-overlay');
+            const container = document.getElementById('modal-container');
+
+            container.innerHTML = `
+                <div class="modal-header">
+                    <h2 class="modal-title">${title}</h2>
+                    <button class="modal-close" onclick="closeModal()">&times;</button>
+                </div>
+                <div class="modal-body">${content}</div>
+            `;
+
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const overlay = document.getElementById('modal-overlay');
+            if (overlay) {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function showToast(message, type = 'info') {
+            const existingToasts = document.querySelectorAll('.toast');
+            existingToasts.forEach(toast => toast.remove());
+
+            const icons = { success: '✅', error: '❌', warning: '⚠️', info: 'ℹ️' };
+            
+            const toast = document.createElement('div');
+            toast.className = `toast toast--${type}`;
+            toast.innerHTML = `
+                <div class="toast-icon">${icons[type]}</div>
+                <div class="toast-message">${message}</div>
+                <button class="toast-close" onclick="this.parentElement.remove()">&times;</button>
+            `;
+
+            document.body.appendChild(toast);
+            setTimeout(() => { if (toast.parentElement) toast.remove(); }, 5000);
+        }
+
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
