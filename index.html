@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VIT-AP University Hospital - Excellence in Healthcare, Innovation in Education">
+    <title>VIT-AP University Hospital</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏥</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="brand-logo">
+                    <span class="logo-icon">🏥</span>
+                    <div class="brand-text">
+                        <h1 class="brand-title">VIT-AP University Hospital</h1>
+                        <span class="brand-tagline">Excellence in Healthcare, Innovation in Education</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="nav-links">
+                <span class="nav-link active" onclick="showSection('home')">🏠 Home</span>
+                <span class="nav-link" onclick="showSection('services')">🏥 Services</span>
+                <span class="nav-link" onclick="showSection('doctors')">👨‍⚕️ Doctors</span>
+                <span class="nav-link" onclick="showSection('student-health')">🎓 Student Health</span>
+                <span class="nav-link" onclick="showSection('emergency')">🚨 Emergency</span>
+                <span class="nav-link" onclick="showSection('records')">📋 Records</span>
+                <span class="nav-link" onclick="showSection('support')">💬 Support</span>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="user-profile" id="user-profile">
+                    <div class="profile-avatar">👤</div>
+                    <span class="profile-name" id="profile-name">Guest</span>
+                    <div class="profile-dropdown">
+                        <div class="dropdown-item" onclick="showSection('dashboard')">📊 Dashboard</div>
+                        <div class="dropdown-item" onclick="showSection('records')">📋 My Records</div>
+                        <div class="dropdown-item" onclick="showSection('appointments')">📅 Appointments</div>
+                        <div class="dropdown-item" onclick="logout()">🚪 Sign Out</div>
+                    </div>
+                </div>
+                
+                <button class="btn btn--outline btn--sm" id="sign-in-btn" onclick="handleSignIn()">🔐 Sign In</button>
+                <button class="btn btn--primary btn--sm" onclick="handleBookAppointment()">📅 Book Appointment</button>
+                <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark theme">🌙</button>
+                
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <span>🏆</span>
+                            <span>NABH Accredited • ISO 9001:2015 Certified</span>
+                        </div>
+                        
+                        <h1 class="hero-title">
+                            Excellence in Healthcare,<br>
+                            <span class="gradient-text">Innovation in Education</span>
+                        </h1>
+                        
+                        <p class="hero-subtitle">
+                            VIT-AP University Hospital provides world-class medical care for our campus community and beyond. 
+                            Experience cutting-edge healthcare with compassionate service, available 24/7 for your health and wellness needs.
+                        </p>
+                        
+                        <div class="hero-actions">
+                            <button class="btn btn--primary btn--lg" onclick="handleBookAppointment()">
+                                📅 Book Appointment Now
+                            </button>
+                            <button class="btn btn--outline btn--lg" onclick="handleEmergency()">
+                                🚨 Emergency: +91-863-123-VITAP
+                            </button>
+                        </div>
+                        
+                        <div class="hero-search">
+                            <div class="search-container">
+                                <div class="search-icon">🔍</div>
+                                <input type="text" class="search-input" placeholder="Search doctors, services, symptoms, or departments..." id="hero-search" onkeypress="handleSearchKeyPress(event)">
+                                <button class="search-btn" onclick="performHeroSearch()">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="container">
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-icon">🏥</div>
+                                <div class="stat-content">
+                                    <div class="stat-number">200+</div>
+                                    <div class="stat-label">Hospital Beds</div>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">👨‍⚕️</div>
+                                <div class="stat-content">
+                                    <div class="stat-number">50+</div>
+                                    <div class="stat-label">Expert Doctors</div>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">🎓</div>
+                                <div class="stat-content">
+                                    <div class="stat-number">15,000+</div>
+                                    <div class="stat-label">Students Served</div>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">⭐</div>
+                                <div class="stat-content">
+                                    <div class="stat-number">4.9/5</div>
+                                    <div class="stat-label">Patient Rating</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="services-overview">
+                <div class="container">
+                    <div class="section-header">
+                        <div class="section-badge">
+                            <span>🏥</span>
+                            <span>Our Healthcare Services</span>
+                        </div>
+                        <h2 class="section-title">Comprehensive Medical Care</h2>
+                        <p class="section-subtitle">From emergency services to specialized care, we provide complete healthcare solutions for the VIT-AP community.</p>
+                    </div>
+                    
+                    <div class="services-grid">
+                        <div class="service-card featured" onclick="showSection('student-health')">
+                            <div class="service-header">
+                                <div class="service-icon">🎓</div>
+                                <div class="service-badge">Free for Students</div>
+                            </div>
+                            <div class="service-content">
+                                <h3>Student Health Center</h3>
+                                <p>24/7 primary healthcare exclusively for VIT-AP students with free consultations, mental health support, and specialized student wellness programs.</p>
+                                <div class="service-features">
+                                    <span class="feature-tag">✓ Free Consultations</span>
+                                    <span class="feature-tag">✓ Mental Health</span>
+                                    <span class="feature-tag">✓ 24/7 Available</span>
+                                </div>
+                            </div>
+                            <div class="service-footer">
+                                <button class="btn btn--outline btn--sm" onclick="event.stopPropagation(); showSection('student-health')">Learn More</button>
+                            </div>
+                        </div>
+
+                        <div class="service-card" onclick="showSection('emergency')">
+                            <div class="service-header">
+                                <div class="service-icon">🚨</div>
+                                <div class="service-badge">24/7</div>
+                            </div>
+                            <div class="service-content">
+                                <h3>Emergency Services</h3>
+                                <p>Round-the-clock emergency care with 3-minute campus response time, advanced trauma center facilities, and specialized emergency protocols.</p>
+                                <div class="service-features">
+                                    <span class="feature-tag">✓ 3min Response</span>
+                                    <span class="feature-tag">✓ Trauma Center</span>
+                                    <span class="feature-tag">✓ Ambulance</span>
+                                </div>
+                            </div>
+                            <div class="service-footer">
+                                <button class="btn btn--outline btn--sm" onclick="event.stopPropagation(); showSection('emergency')">Emergency Info</button>
+                            </div>
+                        </div>
+
+                        <div class="service-card" onclick="showSection('telemedicine')">
+                            <div class="service-header">
+                                <div class="service-icon">💻</div>
+                                <div class="service-badge">New</div>
+                            </div>
+                            <div class="service-content">
+                                <h3>Telemedicine Platform</h3>
+                                <p>Virtual consultations with our doctors through secure HD video calls, perfect for routine follow-ups and remote consultations.</p>
+                                <div class="service-features">
+                                    <span class="feature-tag">✓ HD Video</span>
+                                    <span class="feature-tag">✓ Secure</span>
+                                    <span class="feature-tag">✓ Convenient</span>
+                                </div>
+                            </div>
+                            <div class="service-footer">
+                                <button class="btn btn--outline btn--sm" onclick="event.stopPropagation(); showSection('telemedicine')">Start Video Call</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="quick-actions">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Quick Access Portal</h2>
+                        <p class="section-subtitle">Fast access to the most commonly used healthcare services and information.</p>
+                    </div>
+                    
+                    <div class="actions-grid">
+                        <div class="action-card primary" onclick="handleBookAppointment()">
+                            <div class="action-icon">📅</div>
+                            <div class="action-content">
+                                <div class="action-title">Book Appointment</div>
+                                <div class="action-desc">Schedule with our expert doctors</div>
+                            </div>
+                            <div class="action-arrow">→</div>
+                        </div>
+
+                        <div class="action-card" onclick="showSection('records')">
+                            <div class="action-icon">📋</div>
+                            <div class="action-content">
+                                <div class="action-title">Medical Records</div>
+                                <div class="action-desc">View your complete health history</div>
+                            </div>
+                            <div class="action-arrow">→</div>
+                        </div>
+
+                        <div class="action-card" onclick="showSection('support')">
+                            <div class="action-icon">💬</div>
+                            <div class="action-content">
+                                <div class="action-title">Live Support</div>
+                                <div class="action-desc">Chat with our healthcare team</div>
+                            </div>
+                            <div class="action-arrow">→</div>
+                        </div>
+
+                        <div class="action-card" onclick="showSection('emergency')">
+                            <div class="action-icon">🆘</div>
+                            <div class="action-content">
+                                <div class="action-title">Emergency Help</div>
+                                <div class="action-desc">Immediate medical assistance</div>
+                            </div>
+                            <div class="action-arrow">→</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section id="services" class="section">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">Healthcare Services</h1>
+                    <p class="page-subtitle">Comprehensive medical care tailored for the VIT-AP University community</p>
+                </div>
+                <div class="coming-soon">
+                    <h3>🏥 Complete Services Portal</h3>
+                    <p>We're building a comprehensive services directory with detailed information about all our medical specialties, procedures, and healthcare programs.</p>
+                    <button class="btn btn--primary" onclick="showSection('home')">← Back to Home</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="doctors" class="section">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">Find Our Doctors</h1>
+                    <p class="page-subtitle">Expert physicians and specialists available for consultations</p>
+                </div>
+                <div class="coming-soon">
+                    <h3>👨‍⚕️ Doctor Directory</h3>
+                    <p>Our comprehensive doctor search and booking system is being finalized with detailed profiles, specialties, and real-time availability.</p>
+                    <button class="btn btn--primary" onclick="showSection('home')">← Back to Home</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="student-health" class="section">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">Student Health Center</h1>
+                    <p class="page-subtitle">Dedicated healthcare services for VIT-AP students</p>
+                </div>
+                <div class="coming-soon">
+                    <h3>🎓 Student Health Portal</h3>
+                    <p>Specialized student health services portal under development with free consultations, mental health support, and wellness programs.</p>
+                    <button class="btn btn--primary" onclick="showSection('home')">← Back to Home</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="emergency" class="section">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">Emergency Services</h1>
+                    <p class="page-subtitle">24/7 emergency medical care</p>
+                </div>
+                <div class="coming-soon">
+                    <h3>🚨 Emergency Portal</h3>
+                    <p>For immediate emergencies, call <strong>+91-863-123-VITAP</strong> or visit our emergency department. Our campus response time is under 3 minutes.</p>
+                    <button class="btn btn--primary" onclick="showSection('home')">← Back to Home</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="records" class="section">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">Medical Records</h1>
+                    <p class="page-subtitle">Access your complete health information</p>
+                </div>
+                <div id="records-content">
+                    <div class="coming-soon">
+                        <h3>📋 Records Portal</h3>
+                        <p>Secure medical records access portal is being developed with full HIPAA compliance. Your health data will be accessible with advanced security features.</p>
+                        <button class="btn btn--primary" onclick="showSection('home')">← Back to Home</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="support" class="section">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">Contact Support</h1>
+                    <p class="page-subtitle">Get help from our healthcare support team</p>
+                </div>
+                <div class="coming-soon">
+                    <h3>💬 Support Portal</h3>
+                    <p>Advanced support system with live chat, ticketing, and FAQ is in development. For immediate assistance, email <strong>hospital@vitap.ac.in</strong> or call <strong>+91-863-2293-000</strong>.</p>
+                    <button class="btn btn--primary" onclick="showSection('home')">← Back to Home</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="telemedicine" class="section">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">Telemedicine Platform</h1>
+                    <p class="page-subtitle">Virtual healthcare consultations</p>
+                </div>
+                <div class="coming-soon">
+                    <h3>💻 Telemedicine Portal</h3>
+                    <p>Our secure video consultation platform is coming soon with HD video calls, screen sharing, and digital prescriptions.</p>
+                    <button class="btn btn--primary" onclick="showSection('home')">← Back to Home</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="dashboard" class="section">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">Patient Dashboard</h1>
+                    <p class="page-subtitle">Your personalized healthcare overview</p>
+                </div>
+                <div class="coming-soon">
+                    <h3>📊 Personal Dashboard</h3>
+                    <p>Your personalized health dashboard with appointments, records, reminders, and health tracking is being developed.</p>
+                    <button class="btn btn--primary" onclick="showSection('home')">← Back to Home</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="appointments" class="section">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">My Appointments</h1>
+                    <p class="page-subtitle">Manage your scheduled appointments</p>
+                </div>
+                <div class="coming-soon">
+                    <h3>📅 Appointments Portal</h3>
+                    <p>Complete appointment management system with scheduling, reminders, and history is under development.</p>
+                    <button class="btn btn--primary" onclick="showSection('home')">← Back to Home</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="modal-overlay" class="modal-overlay" onclick="closeModal()">
+        <div id="modal-container" class="modal-container" onclick="event.stopPropagation()">
+        </div>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+</html>
