@@ -86,16 +86,28 @@ function setTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('vitap-theme', theme);
 
-    const themeToggle = document.querySelector('.theme-toggle');
+    const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
         themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+        themeToggle.setAttribute('title', `Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`);
     }
+
+    console.log(`🎨 Theme set to: ${theme}`);
 }
 
 function toggleTheme() {
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
-    showToast(`Switched to ${newTheme} theme`, 'success');
+    showToast(`Switched to ${newTheme} theme! 🎨`, 'success');
+
+    // Add a nice visual feedback
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        themeToggle.style.transform = 'rotate(360deg)';
+        setTimeout(() => {
+            themeToggle.style.transform = '';
+        }, 300);
+    }
 }
 
 function setupEventListeners() {
@@ -111,6 +123,15 @@ function setupEventListeners() {
             }
         });
     });
+
+    // Theme toggle button
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleTheme();
+        });
+    }
 
     // Hero search
     const heroSearch = document.getElementById('hero-search');
@@ -131,6 +152,20 @@ function setupEventListeners() {
             }
         });
     }
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+        // Toggle theme with Ctrl/Cmd + Shift + T
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'T') {
+            e.preventDefault();
+            toggleTheme();
+        }
+
+        // Close modal with Escape
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
 
     console.log('🎯 Event listeners setup complete');
 }
@@ -205,7 +240,8 @@ function handleSignIn() {
             <div style="text-align: center; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-light);">
                 <small style="color: var(--text-secondary);">
                     Demo Credentials: 24MIC7198 / vitap123<br>
-                    For Faculty: FAC001 / vitap123
+                    For Faculty: FAC001 / vitap123<br>
+                    🔥 Pro tip: Use <kbd>Ctrl+Shift+T</kbd> to toggle theme!
                 </small>
             </div>
         </div>
@@ -223,10 +259,10 @@ function processSignIn(event) {
         currentUser = getUserData(username);
         updateUIForLoggedInUser();
         closeModal();
-        showToast(`Welcome back, ${currentUser.name}!`, 'success');
+        showToast(`Welcome back, ${currentUser.name}! 👋`, 'success');
         console.log('✅ User signed in:', currentUser);
     } else {
-        showToast('Invalid credentials. Please try again.', 'error');
+        showToast('Invalid credentials. Please try again. 🔐', 'error');
     }
 }
 
@@ -295,17 +331,17 @@ function logout() {
     if (signInBtn) signInBtn.style.display = 'flex';
     if (userProfile) userProfile.classList.remove('active');
 
-    showToast('Signed out successfully', 'info');
+    showToast('Signed out successfully! 👋', 'info');
 }
 
 function handleBookAppointment() {
     if (!currentUser) {
-        showToast('Please sign in first to book an appointment', 'warning');
+        showToast('Please sign in first to book an appointment 🔐', 'warning');
         handleSignIn();
         return;
     }
 
-    const modal = createModal('Book Appointment', `
+    const modal = createModal('Book Appointment 📅', `
         <div class="appointment-booking">
             <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
                 Welcome <strong>${currentUser.name}</strong>! Let's schedule your appointment.
@@ -427,11 +463,11 @@ function showAppointmentConfirmation(appointmentData) {
         </div>
     `);
 
-    showToast('Appointment booked successfully!', 'success');
+    showToast('Appointment booked successfully! 🎉', 'success');
 }
 
 function downloadAppointmentTicket(confirmationId) {
-    showToast('Appointment ticket downloaded to your device', 'success');
+    showToast('Appointment ticket downloaded to your device 📥', 'success');
     console.log('📥 Downloading appointment ticket:', confirmationId);
 }
 
@@ -441,7 +477,7 @@ function performHeroSearch() {
 
     if (query) {
         console.log('🔍 Searching for:', query);
-        showToast(`Searching for "${query}"... Advanced search coming soon!`, 'info');
+        showToast(`Searching for "${query}"... Advanced search coming soon! 🔍`, 'info');
 
         // Clear search input
         if (searchInput) searchInput.value = '';
@@ -455,7 +491,7 @@ function handleSearchKeyPress(event) {
 }
 
 function handleEmergency() {
-    showToast('Emergency services: +91-863-123-VITAP', 'warning');
+    showToast('Emergency services: +91-863-123-VITAP 🚨', 'warning');
 
     if (confirm('This will call the emergency hotline. Continue?')) {
         window.open('tel:+918631234827');
@@ -471,7 +507,7 @@ function toggleMobileMenu() {
     }
 
     // In a real implementation, you'd show/hide mobile menu
-    showToast('Mobile menu toggle - full navigation coming soon!', 'info');
+    showToast('Mobile menu toggle - full navigation coming soon! 📱', 'info');
 }
 
 // Modal utility methods
@@ -549,6 +585,13 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         showToast('Welcome to VIT-AP University Hospital! 🏥', 'success');
     }, 1000);
+
+    // Show theme tip after a delay
+    setTimeout(() => {
+        if (currentTheme === 'light') {
+            showToast('💡 Tip: Click the 🌙 button to switch to dark mode!', 'info');
+        }
+    }, 3000);
 });
 
 // Global functions for onclick handlers
